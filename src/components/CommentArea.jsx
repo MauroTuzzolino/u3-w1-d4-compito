@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import CommentsList from "../components/CommentsList";
 import AddComment from "../components/AddComment";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 class CommentArea extends Component {
   state = {
@@ -46,8 +48,8 @@ class CommentArea extends Component {
     return (
       <div className="comment-area">
         <h5>Recensioni</h5>
-        {loading && <p>Caricamento...</p>}
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {loading && <Loading />}
+        {error && <Error message={error} />}
         <CommentsList comments={comments} />
         <AddComment asin={this.props.asin} onCommentAdded={this.handleCommentAdded} />
       </div>
